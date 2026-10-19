@@ -1,0 +1,33 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Crimson rain</title>
+  <desc id="desc">An original Acheron-inspired scene of crimson droplets falling into silver ripples in charcoal mist.</desc>
+  <defs>
+    <radialGradient id="mist"><stop stop-color="#45434c"/><stop offset="1" stop-color="#15151a"/></radialGradient>
+    <linearGradient id="horizon"><stop stop-color="#18181d"/><stop offset=".5" stop-color="#ae344d"/><stop offset="1" stop-color="#18181d"/></linearGradient>
+    <linearGradient id="drop" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#9f233b" stop-opacity="0"/><stop offset="1" stop-color="#ee7188"/></linearGradient>
+    <style>
+      .rain { animation: fall 4.8s linear infinite; opacity: 0; }
+      .ring { transform-box: fill-box; transform-origin: center; animation: ripple 4.8s ease-out infinite; opacity: 0; }
+      .b { animation-delay: -1.6s; } .c { animation-delay: -3.2s; }
+      @keyframes fall { 0% { transform: translateY(-120px); opacity: 0; } 10% { opacity: .9; } 42% { transform: translateY(125px); opacity: .9; } 44%,100% { transform: translateY(130px); opacity: 0; } }
+      @keyframes ripple { 0%,42% { transform: scale(.12); opacity: 0; } 46% { opacity: .75; } 95%,100% { transform: scale(1.6); opacity: 0; } }
+      @media (prefers-reduced-motion: reduce) { .rain { animation: none; opacity: .6; } .ring { animation: none; opacity: .35; } }
+    </style>
+  </defs>
+  <rect width="1200" height="300" rx="16" fill="url(#mist)"/>
+  <path d="M70 235H1130" stroke="url(#horizon)"/>
+  <g fill="none" stroke="#9c98a6" stroke-width="1">
+    <ellipse class="ring" cx="195" cy="235" rx="65" ry="12"/>
+    <ellipse class="ring b" cx="1000" cy="235" rx="80" ry="15"/>
+    <ellipse class="ring c" cx="790" cy="258" rx="55" ry="10"/>
+  </g>
+  <g fill="url(#drop)">
+    <path class="rain" d="M195 68 Q184 99 195 110 Q206 99 195 68Z"/>
+    <path class="rain b" d="M1000 68 Q989 99 1000 110 Q1011 99 1000 68Z"/>
+    <path class="rain c" d="M790 91 Q781 122 790 133 Q799 122 790 91Z"/>
+  </g>
+  <path d="M360 95H400" stroke="#ce3c58" stroke-width="3"/>
+  <text x="360" y="135" fill="#eeeef0" font-family="Segoe UI,Arial,sans-serif" font-size="32" font-weight="600" letter-spacing="5">DANEL TUNGPALAN</text>
+  <text x="360" y="167" fill="#b7b5bf" font-family="Segoe UI,Arial,sans-serif" font-size="12" letter-spacing="4">WEB · SOFTWARE · HARDWARE</text>
+  <text x="600" y="280" text-anchor="middle" fill="#89858f" font-family="Segoe UI,Arial,sans-serif" font-size="10" letter-spacing="4">JEONDANEL</text>
+</svg>
