@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">Hi, I'm Danel Tungpalan</h1>
-<p align="center">Information Technology student · Quezon City, Philippines</p>
+<p align="center">4th Year Information Technology Student · Quezon City, Philippines</p>
 
 ## About Me
 
