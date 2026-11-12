@@ -1,0 +1,13 @@
+{
+  "name": "profile-assets",
+  "private": true,
+  "type": "module",
+  "description": "Build scripts for the profile README (banner text, stack panel, GitHub stats cards).",
+  "scripts": {
+    "build:static": "node build-static.mjs",
+    "build:stats": "node generate-stats.mjs"
+  },
+  "dependencies": {
+    "opentype.js": "1.3.4"
+  }
+}
