@@ -1,6 +1,7 @@
-// Rebuilds the static artwork: the title text in assets/crimson-rain.svg and assets/stack.svg.
+// Rebuilds the static artwork: the title text in assets/crimson-rain.svg, assets/stack.svg
+// and the project cards in assets/projects/.
 // Run with: npm run build:static (from the scripts/ folder).
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { textPath, measure } from './lib/text.mjs';
@@ -73,3 +74,63 @@ writeFileSync(
 `,
 );
 console.log('wrote assets/crimson-rain.svg title + assets/stack.svg');
+
+/* ------------------------------------------------------- project cards */
+const projects = [
+  { file: 'ecohydrate', tag: 'HARDWARE', name: 'EcoHydrate', stack: ['arduino', 'csharp'],
+    desc: 'Exchanges inserted plastic bottles for timed water refills using sensors and automated dispensing.' },
+  { file: 'enrollment', tag: 'WEB APPLICATION', name: 'Enrollment & Registration', stack: ['php', 'mysql', 'javascript', 'html5', 'css3'],
+    desc: 'Centralizes student applications, subject selection, and registrar enrollment management.' },
+  { file: 'qatrail', tag: 'SOFTWARE TESTING', name: 'QATrail', chip: 'Test management',
+    desc: 'Connects test cases, execution results, and bug tracking in one workflow.' },
+  { file: 'portfolio', tag: 'WEB', name: 'Portfolio', stack: ['svelte', 'typescript', 'vite'],
+    desc: 'A one-page portfolio with project, about, and contact sections.' },
+];
+
+function wrap(text, opts, maxWidth) {
+  const lines = [];
+  let line = '';
+  for (const word of text.split(' ')) {
+    const next = line ? `${line} ${word}` : word;
+    if (line && measure(next, opts) > maxWidth) { lines.push(line); line = word; } else line = next;
+  }
+  return line ? [...lines, line] : lines;
+}
+
+const CW = 490, CH = 210;
+mkdirSync(join(assets, 'projects'), { recursive: true });
+projects.forEach((p, i) => {
+  const descOpts = { font: 'regular', size: 13.5 };
+  const lines = wrap(p.desc, descOpts, CW - 48);
+  if (lines.length > 3) console.warn(`! ${p.file}: description wraps to ${lines.length} lines`);
+
+  const bottom = p.chip
+    ? (() => {
+        const w = measure(p.chip, { font: 'medium', size: 11.5, spacing: 0.5 }) + 28;
+        return [
+          `<rect x="24" y="160" width="${w.toFixed(1)}" height="30" rx="15" fill="#1d1d26" stroke="#2a2a33"/>`,
+          textPath(p.chip, { x: 24 + w / 2, y: 179, font: 'medium', size: 11.5, spacing: 0.5, anchor: 'middle', fill: '#c9c9d0' }),
+        ];
+      })()
+    : p.stack.flatMap((name, k) => [
+        `<rect x="${24 + k * 42}" y="158" width="34" height="34" rx="9" fill="#1d1d26" stroke="#2a2a33"/>`,
+        `<image href="${icon(name)}" x="${31 + k * 42}" y="165" width="20" height="20"/>`,
+      ]);
+
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${CW}" height="${CH}" viewBox="0 0 ${CW} ${CH}" role="img" aria-labelledby="title desc">
+  <title id="title">${p.name.replace(/&/g, '&amp;')}</title>
+  <desc id="desc">${p.desc}${p.stack ? ` Built with ${p.stack.join(', ')}.` : ` ${p.chip}.`}</desc>
+  <rect x=".5" y=".5" width="${CW - 1}" height="${CH - 1}" rx="14" fill="#14141a" stroke="#2a2a33"/>
+  <path d="M24 46h22" stroke="#e5384f" stroke-width="2" stroke-linecap="round"/>
+  ${textPath(p.tag, { x: 24, y: 36, font: 'semibold', size: 11, spacing: 3, fill: '#ff6a7c' })}
+  ${textPath(String(i + 1).padStart(2, '0'), { x: CW - 24, y: 48, font: 'display', size: 34, anchor: 'end', fill: '#2a2a33' })}
+  ${textPath(p.name, { x: 24, y: 86, font: 'display', size: 28, spacing: 0.5, fill: '#f4f4f6' })}
+  ${lines.map((l, k) => textPath(l, { x: 24, y: 114 + k * 20, ...descOpts, fill: '#c9c9d0' })).join('\n  ')}
+  ${bottom.join('\n  ')}
+  ${textPath('View repository', { x: CW - 40, y: 180, font: 'medium', size: 11.5, spacing: 0.5, anchor: 'end', fill: '#ff6a7c' })}
+  <path d="M${CW - 33} 173l5.5 5.5-5.5 5.5" fill="none" stroke="#ff6a7c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+  writeFileSync(join(assets, 'projects', `${p.file}.svg`), svg);
+});
+console.log(`wrote ${projects.length} project cards`);

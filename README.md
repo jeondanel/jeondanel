@@ -1,8 +1,6 @@
 ﻿<div align="center">
 
-<img src="./assets/crimson-rain.svg" width="100%" alt="Danel Tungpalan: crimson raindrops falling into dark water" />
-
-<h3>Building web applications, software testing tools, and Arduino-based systems.</h3>
+<img src="./assets/crimson-rain.svg?v=3" width="100%" alt="Danel Tungpalan: crimson raindrops falling into dark water" />
 
 <p>
   4th Year BS Information Technology Student · Quezon City University<br />
@@ -38,12 +36,15 @@ I'm **Danel Macuja Tungpalan**, a Bachelor of Science in Information Technology 
 
 ## Featured Projects
 
-| Project | Description | Stack |
-| :--- | :--- | :--- |
-| [**EcoHydrate**](https://github.com/jeondanel/EcoHydrate-Arduino-Based-Smart-Water-Dispenser) | Exchanges inserted plastic bottles for timed water refills using sensors and automated dispensing. | <img src="./assets/icons/arduino.svg" height="22" title="Arduino Uno / IDE" alt="Arduino Uno, Arduino IDE" />&nbsp;<img src="./assets/icons/csharp.svg" height="22" title="C#" alt="C#" /> |
-| [**Enrollment & Registration**](https://github.com/jeondanel/Enrollment-and-Registration-Subsystem) | Centralizes student applications, subject selection, and registrar enrollment management. | <img src="./assets/icons/php.svg" height="22" title="PHP" alt="PHP" />&nbsp;<img src="./assets/icons/mysql.svg" height="22" title="MySQL" alt="MySQL" />&nbsp;<img src="./assets/icons/javascript.svg" height="22" title="JavaScript" alt="JavaScript" />&nbsp;<img src="./assets/icons/html5.svg" height="22" title="HTML" alt="HTML" />&nbsp;<img src="./assets/icons/css3.svg" height="22" title="CSS" alt="CSS" /> |
-| [**QATrail**](https://github.com/jeondanel/QATrail-Test-Case-and-Bug-Tracking-System) | Connects test cases, execution results, and bug tracking in one workflow. | Test management |
-| [**Portfolio**](https://github.com/jeondanel/jeondanel.github.io) | A one-page portfolio with project, about, and contact sections. | <img src="./assets/icons/svelte.svg" height="22" title="Svelte" alt="Svelte" />&nbsp;<img src="./assets/icons/typescript.svg" height="22" title="TypeScript" alt="TypeScript" />&nbsp;<img src="./assets/icons/vite.svg" height="22" title="Vite" alt="Vite" /> |
+<p align="center">
+  <a href="https://github.com/jeondanel/EcoHydrate-Arduino-Based-Smart-Water-Dispenser"><img src="./assets/projects/ecohydrate.svg" width="49%" alt="EcoHydrate: Arduino-based smart water dispenser, built with Arduino and C#" /></a>
+  <a href="https://github.com/jeondanel/Enrollment-and-Registration-Subsystem"><img src="./assets/projects/enrollment.svg" width="49%" alt="Enrollment and Registration: student enrollment web application, built with PHP, MySQL, JavaScript, HTML and CSS" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/jeondanel/QATrail-Test-Case-and-Bug-Tracking-System"><img src="./assets/projects/qatrail.svg" width="49%" alt="QATrail: test case and bug tracking system" /></a>
+  <a href="https://github.com/jeondanel/jeondanel.github.io"><img src="./assets/projects/portfolio.svg" width="49%" alt="Portfolio: one-page portfolio built with Svelte, TypeScript and Vite" /></a>
+</p>
 
 ## GitHub Statistics
 

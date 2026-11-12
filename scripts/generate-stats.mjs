@@ -9,7 +9,7 @@ import { dirname, join } from 'node:path';
 import { textPath } from './lib/text.mjs';
 
 const USER = process.env.PROFILE_USER || process.env.GITHUB_REPOSITORY_OWNER || 'jeondanel';
-const outDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'assets', 'stats');
+const outDir = process.env.STATS_OUT_DIR || join(dirname(fileURLToPath(import.meta.url)), '..', 'assets', 'stats');
 mkdirSync(outDir, { recursive: true });
 
 /* ------------------------------------------------------------------ API */

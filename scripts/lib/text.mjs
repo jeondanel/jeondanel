@@ -8,9 +8,10 @@ const fontDir = join(dirname(fileURLToPath(import.meta.url)), '..', 'fonts');
 const cache = new Map();
 
 export const FONTS = {
-  display: 'Cinzel-SemiBold.ttf',
-  medium: 'Montserrat-Medium.ttf',
-  semibold: 'Montserrat-SemiBold.ttf',
+  display: 'Belleza-Regular.ttf',
+  regular: 'Outfit-Regular.ttf',
+  medium: 'Outfit-Medium.ttf',
+  semibold: 'Outfit-SemiBold.ttf',
 };
 
 function load(key) {
